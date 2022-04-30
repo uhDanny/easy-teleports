@@ -1,13 +1,13 @@
-package com.example;
+package com.duckblade.osrs;
 
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
 
-public class ExamplePluginTest
+public class EasyPharaohSceptreTest
 {
 	public static void main(String[] args) throws Exception
 	{
-		ExternalPluginManager.loadBuiltin(ExamplePlugin.class);
+		ExternalPluginManager.loadBuiltin(EasyPharaohSceptre.class);
 		RuneLite.main(args);
 	}
 }
