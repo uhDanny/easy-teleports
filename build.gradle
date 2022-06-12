@@ -23,20 +23,20 @@ repositories {
     mavenCentral()
 }
 
-def runeLiteVersion = '1.8.18.4'
+def runeLiteVersion = '1.8.22'
 
 dependencies {
-    compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
+    compileOnly group: 'net.runelite', name: 'client', version: runeLiteVersion
 
-    compileOnly 'org.projectlombok:lombok:1.18.4'
-    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
     testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion
     testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
 }
 
 group = 'com.duckblade.osrs'
-version = '1.5.2'
+version = '2.0.0'
 sourceCompatibility = '1.8'
 
 tasks.withType(JavaCompile) {
