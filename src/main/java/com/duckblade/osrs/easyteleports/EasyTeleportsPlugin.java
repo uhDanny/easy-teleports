@@ -135,7 +135,7 @@ public class EasyTeleportsPlugin extends Plugin
 		// chatbox dialog
 		if (e.getGroupId() == WidgetInfo.DIALOG_OPTION_OPTIONS.getGroupId())
 		{
-			clientThread.invokeLater(() -> replaceWidgetChildren(WidgetID.DIALOG_OPTION_GROUP_ID, 0, Replacer::isApplicableToDialog));
+			clientThread.invokeLater(() -> replaceWidgetChildren(WidgetInfo.DIALOG_OPTION_OPTIONS, Replacer::isApplicableToDialog));
 		}
 
 		// the scroll thing that xeric's talisman uses
@@ -149,6 +149,11 @@ public class EasyTeleportsPlugin extends Plugin
 				replaceWidgetChildren(WidgetID.ADVENTURE_LOG_ID, 3, (r, w) -> r.isApplicableToAdventureLog(advLogHeader));
 			});
 		}
+	}
+
+	private void replaceWidgetChildren(WidgetInfo widgetInfo, BiPredicate<Replacer, Widget> filterSelector)
+	{
+		replaceWidgetChildren(widgetInfo.getGroupId(), widgetInfo.getChildId(), filterSelector);
 	}
 
 	private void replaceWidgetChildren(int groupId, int entriesChildId, BiPredicate<Replacer, Widget> filterSelector)
