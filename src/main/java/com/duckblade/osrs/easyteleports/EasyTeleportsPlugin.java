@@ -3,6 +3,7 @@ package com.duckblade.osrs.easyteleports;
 import com.duckblade.osrs.easyteleports.replacers.KharedstMemoirsReplacer;
 import com.duckblade.osrs.easyteleports.replacers.PharaohSceptreReplacer;
 import com.duckblade.osrs.easyteleports.replacers.Replacer;
+import com.duckblade.osrs.easyteleports.replacers.RingOfDuelingReplacer;
 import com.duckblade.osrs.easyteleports.replacers.XericsTalismanReplacer;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
@@ -76,6 +77,9 @@ public class EasyTeleportsPlugin extends Plugin
 	@Inject
 	private XericsTalismanReplacer xericsTalismanReplacer;
 
+	@Inject
+	private RingOfDuelingReplacer ringOfDuelingReplacer;
+
 	private final Set<Replacer> replacers = new HashSet<>();
 
 	private static <T> void applyReplacement(List<TeleportReplacement> replacements, T entry, Function<T, String> getter, BiConsumer<T, String> setter)
@@ -111,6 +115,7 @@ public class EasyTeleportsPlugin extends Plugin
 		this.replacers.add(pharaohSceptreReplacer);
 		this.replacers.add(kharedstMemoirsReplacer);
 		this.replacers.add(xericsTalismanReplacer);
+		this.replacers.add(ringOfDuelingReplacer);
 
 		propagateConfig();
 	}
