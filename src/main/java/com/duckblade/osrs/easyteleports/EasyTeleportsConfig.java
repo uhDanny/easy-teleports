@@ -14,6 +14,7 @@ public interface EasyTeleportsConfig extends Config
 	int POSITION_PHARAOHS_SCEPTRE = POSITION_FLAGS + 100;
 	int POSITION_KHAREDSTS_MEMOIRS = POSITION_PHARAOHS_SCEPTRE + 100;
 	int POSITION_XERICS_TALISMAN = POSITION_KHAREDSTS_MEMOIRS + 100;
+	int POSITION_RING_OF_DUELING = POSITION_XERICS_TALISMAN + 100;
 
 	@ConfigSection(
 		name = "Toggles",
@@ -54,6 +55,18 @@ public interface EasyTeleportsConfig extends Config
 		position = POSITION_FLAGS + (POSITION_KHAREDSTS_MEMOIRS / 100)
 	)
 	default boolean enableKharedstsMemoirs()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		section = SECTION_ENABLE_FLAGS,
+		keyName = "enableRingOfDueling",
+		name = "Ring of dueling",
+		description = "Replace teleport entries on the Ring of Dueling with new names.",
+		position = POSITION_FLAGS + (POSITION_RING_OF_DUELING / 100)
+	)
+	default boolean enableRingOfDueling()
 	{
 		return false;
 	}
@@ -250,4 +263,47 @@ public interface EasyTeleportsConfig extends Config
 		return "Chambers of Xeric";
 	}
 
+	@ConfigSection(
+		name = "Ring of dueling",
+		description = "Replacement text for the ring of dueling teleport locations.",
+		position = POSITION_RING_OF_DUELING,
+		closedByDefault = true
+	)
+	String SECTION_RING_OF_DUELING = "sectionRingOfDueling";
+
+	@ConfigItem(
+		keyName = "replacementPvPArena",
+		name = "PvP Arena",
+		description = "Replace PvP Arena",
+		section = SECTION_RING_OF_DUELING,
+		position = POSITION_RING_OF_DUELING + 1
+	)
+	default String replacementPvPArena()
+	{
+		return "Duel Arena";
+	}
+
+	@ConfigItem(
+		keyName = "replacementCastleWars",
+		name = "Castle Wars",
+		description = "Replace Castle Wars",
+		section = SECTION_RING_OF_DUELING,
+		position = POSITION_RING_OF_DUELING + 2
+	)
+	default String replacementCastleWars()
+	{
+		return "Castle Wars";
+	}
+
+	@ConfigItem(
+		keyName = "replacementFeroxEnclave",
+		name = "Ferox Enclave",
+		description = "Replace Ferox Enclave",
+		section = SECTION_RING_OF_DUELING,
+		position = POSITION_RING_OF_DUELING + 3
+	)
+	default String replacementFeroxEnclave()
+	{
+		return "Ferox Enclave";
+	}
 }
