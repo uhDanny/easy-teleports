@@ -25,6 +25,11 @@ public interface Replacer
 		return false;
 	}
 
+	default boolean isApplicableToJewelleryBox()
+	{
+		return false;
+	}
+
 	default EquipmentInventorySlot getEquipmentSlot()
 	{
 		return null;

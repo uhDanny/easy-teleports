@@ -53,6 +53,12 @@ public class RingOfDueling implements Replacer
 	}
 
 	@Override
+	public boolean isApplicableToJewelleryBox()
+	{
+		return true;
+	}
+
+	@Override
 	public EquipmentInventorySlot getEquipmentSlot()
 	{
 		return EquipmentInventorySlot.RING;

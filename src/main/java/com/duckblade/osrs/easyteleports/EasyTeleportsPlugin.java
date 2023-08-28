@@ -60,6 +60,8 @@ public class EasyTeleportsPlugin extends Plugin
 			.put(25362456, EquipmentInventorySlot.RING)
 			.build();
 
+	private static final int GROUP_ID_JEWELLERY_BOX = 590;
+
 	@Inject
 	private Client client;
 
@@ -120,6 +122,25 @@ public class EasyTeleportsPlugin extends Plugin
 			{
 				Widget advLogHeader = getAdventureLogHeader();
 				replaceWidgetChildren(WidgetID.ADVENTURE_LOG_ID, 3, (r, w) -> r.isApplicableToAdventureLog(advLogHeader));
+			});
+			return;
+		}
+
+		// jewellery box
+		if (e.getGroupId() == GROUP_ID_JEWELLERY_BOX)
+		{
+			clientThread.invokeLater(() ->
+			{
+				Widget jewelleryBoxRoot = client.getWidget(GROUP_ID_JEWELLERY_BOX, 0);
+				if (jewelleryBoxRoot == null)
+				{
+					return;
+				}
+
+				for (int i = 0; i < 6; i++)
+				{
+					replaceWidgetChildren(GROUP_ID_JEWELLERY_BOX, 2 + i, (r, w) -> r.isApplicableToJewelleryBox());
+				}
 			});
 		}
 	}
