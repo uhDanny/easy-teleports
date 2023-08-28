@@ -18,6 +18,7 @@ public interface EasyTeleportsConfig extends Config
 	int POSITION_DIARY_CAPE = POSITION_RING_OF_DUELING + 100;
 	int POSITION_SLAYER_RING = POSITION_DIARY_CAPE + 100;
 	int POSITION_DRAKANS = POSITION_SLAYER_RING + 100;
+	int POSITION_RING_OF_SHADOWS = POSITION_DRAKANS + 100;
 
 	@ConfigSection(
 		name = "Toggles",
@@ -106,6 +107,18 @@ public interface EasyTeleportsConfig extends Config
 		position = POSITION_FLAGS + (POSITION_DRAKANS / 100)
 	)
 	default boolean enableDrakans()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		section = SECTION_ENABLE_FLAGS,
+		keyName = "enableRingOfShadows",
+		name = "Ring of Shadows (DT2)",
+		description = "Replace teleport entries on the Ring of shadows (DT2 ring) with new names.",
+		position = POSITION_FLAGS + (POSITION_RING_OF_SHADOWS / 100)
+	)
+	default boolean enableRingOfShadows()
 	{
 		return false;
 	}
@@ -656,5 +669,73 @@ public interface EasyTeleportsConfig extends Config
 	default String replacementSlepe()
 	{
 		return "Nightmare";
+	}
+
+	@ConfigSection(
+		name = "Ring of shadows (DT2)",
+		description = "Replacement text for the Ring of shadows (DT2) teleport locations.",
+		position = POSITION_RING_OF_SHADOWS,
+		closedByDefault = true
+	)
+	String SECTION_RING_OF_SHADOWS = "sectionRingOfShadows";
+
+	@ConfigItem(
+		keyName = "replacementAncientVault",
+		name = "The Ancient Vault",
+		description = "Replace The Ancient Vault",
+		section = SECTION_RING_OF_SHADOWS,
+		position = POSITION_RING_OF_SHADOWS + 1
+	)
+	default String replacementAncientVault()
+	{
+		return "<col=A8A12A>DT2 Vault</col>";
+	}
+
+	@ConfigItem(
+		keyName = "replacementGhorrockDungeon",
+		name = "Ghorrock Dungeon",
+		description = "Replace Ghorrock Dungeon",
+		section = SECTION_RING_OF_SHADOWS,
+		position = POSITION_RING_OF_SHADOWS + 2
+	)
+	default String replacementGhorrockDungeon()
+	{
+		return "<col=39C8EA>Duke Sucellus</col>";
+	}
+
+	@ConfigItem(
+		keyName = "replacementScar",
+		name = "The Scar",
+		description = "Replace The Scar",
+		section = SECTION_RING_OF_SHADOWS,
+		position = POSITION_RING_OF_SHADOWS + 3
+	)
+	default String replacementScar()
+	{
+		return "<col=E7BE8D>Leviathan</col>";
+	}
+
+	@ConfigItem(
+		keyName = "replacementLassarUndercity",
+		name = "Lassar Undercity",
+		description = "Replace Lassar Undercity",
+		section = SECTION_RING_OF_SHADOWS,
+		position = POSITION_RING_OF_SHADOWS + 4
+	)
+	default String replacementLassarUndercity()
+	{
+		return "<col=926AE8>Whisperer</col>";
+	}
+
+	@ConfigItem(
+		keyName = "replacementStranglewood",
+		name = "The Stranglewood",
+		description = "Replace The Stranglewood",
+		section = SECTION_RING_OF_SHADOWS,
+		position = POSITION_RING_OF_SHADOWS + 5
+	)
+	default String replacementStranglewood()
+	{
+		return "<col=E36969>Vardorvis</col>";
 	}
 }

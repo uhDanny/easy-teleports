@@ -6,6 +6,7 @@ import com.duckblade.osrs.easyteleports.replacers.KharedstMemoirs;
 import com.duckblade.osrs.easyteleports.replacers.PharaohSceptre;
 import com.duckblade.osrs.easyteleports.replacers.Replacer;
 import com.duckblade.osrs.easyteleports.replacers.RingOfDueling;
+import com.duckblade.osrs.easyteleports.replacers.RingOfShadows;
 import com.duckblade.osrs.easyteleports.replacers.SlayerRing;
 import com.duckblade.osrs.easyteleports.replacers.XericsTalisman;
 import com.google.common.base.Strings;
@@ -88,6 +89,7 @@ public class EasyTeleportsPlugin extends Plugin
 		replacers.addBinding().to(KharedstMemoirs.class);
 		replacers.addBinding().to(PharaohSceptre.class);
 		replacers.addBinding().to(RingOfDueling.class);
+		replacers.addBinding().to(RingOfShadows.class);
 		replacers.addBinding().to(SlayerRing.class);
 		replacers.addBinding().to(XericsTalisman.class);
 	}
