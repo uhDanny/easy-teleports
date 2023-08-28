@@ -30,6 +30,11 @@ public interface Replacer
 		return false;
 	}
 
+	default boolean isApplicableToInventory(int itemId)
+	{
+		return false;
+	}
+
 	default EquipmentInventorySlot getEquipmentSlot()
 	{
 		return null;

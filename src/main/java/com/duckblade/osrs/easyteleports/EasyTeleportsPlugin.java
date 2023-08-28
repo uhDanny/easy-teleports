@@ -1,6 +1,7 @@
 package com.duckblade.osrs.easyteleports;
 
 import com.duckblade.osrs.easyteleports.replacers.DiaryCape;
+import com.duckblade.osrs.easyteleports.replacers.DrakansMedallion;
 import com.duckblade.osrs.easyteleports.replacers.KharedstMemoirs;
 import com.duckblade.osrs.easyteleports.replacers.PharaohSceptre;
 import com.duckblade.osrs.easyteleports.replacers.Replacer;
@@ -62,6 +63,8 @@ public class EasyTeleportsPlugin extends Plugin
 			.put(25362456, EquipmentInventorySlot.RING)
 			.build();
 
+	private static final int ACTION_PARAM_1_INVENTORY = 9764864;
+
 	private static final int GROUP_ID_JEWELLERY_BOX = 590;
 
 	@Inject
@@ -81,6 +84,7 @@ public class EasyTeleportsPlugin extends Plugin
 	{
 		Multibinder<Replacer> replacers = Multibinder.newSetBinder(binder, Replacer.class);
 		replacers.addBinding().to(DiaryCape.class);
+		replacers.addBinding().to(DrakansMedallion.class);
 		replacers.addBinding().to(KharedstMemoirs.class);
 		replacers.addBinding().to(PharaohSceptre.class);
 		replacers.addBinding().to(RingOfDueling.class);
@@ -178,6 +182,13 @@ public class EasyTeleportsPlugin extends Plugin
 	@Subscribe
 	public void onMenuEntryAdded(MenuEntryAdded e)
 	{
+		if (e.getActionParam1() == ACTION_PARAM_1_INVENTORY)
+		{
+			List<TeleportReplacement> applicableReplacements = getApplicableReplacements(r -> r.isApplicableToInventory(e.getMenuEntry().getItemId()));
+			applyReplacement(applicableReplacements, e.getMenuEntry(), MenuEntry::getOption, MenuEntry::setOption);
+			return;
+		}
+
 		EquipmentInventorySlot equipmentSlot = ACTION_PARAM_1_TO_EQUIPMENT_SLOT.get(e.getActionParam1());
 		if (equipmentSlot != null)
 		{

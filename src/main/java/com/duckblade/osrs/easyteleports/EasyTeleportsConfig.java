@@ -17,6 +17,7 @@ public interface EasyTeleportsConfig extends Config
 	int POSITION_RING_OF_DUELING = POSITION_XERICS_TALISMAN + 100;
 	int POSITION_DIARY_CAPE = POSITION_RING_OF_DUELING + 100;
 	int POSITION_SLAYER_RING = POSITION_DIARY_CAPE + 100;
+	int POSITION_DRAKANS = POSITION_SLAYER_RING + 100;
 
 	@ConfigSection(
 		name = "Toggles",
@@ -93,6 +94,18 @@ public interface EasyTeleportsConfig extends Config
 		position = POSITION_FLAGS + (POSITION_SLAYER_RING / 100)
 	)
 	default boolean enableSlayerRing()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		section = SECTION_ENABLE_FLAGS,
+		keyName = "enableDrakans",
+		name = "Drakan's medallion",
+		description = "Replace teleport entries on Drakan's medallion with new names.",
+		position = POSITION_FLAGS + (POSITION_DRAKANS / 100)
+	)
+	default boolean enableDrakans()
 	{
 		return false;
 	}
@@ -599,5 +612,49 @@ public interface EasyTeleportsConfig extends Config
 	default String replacementDarkBeasts()
 	{
 		return "ME2 Caves";
+	}
+
+	@ConfigSection(
+		name = "Drakan's medallion",
+		description = "Replacement text for Drakan's medallion teleport locations.",
+		position = POSITION_DRAKANS,
+		closedByDefault = true
+	)
+	String SECTION_DRAKANS = "sectionDrakans";
+
+	@ConfigItem(
+		keyName = "replacementVerSinhaza",
+		name = "Ver Sinhaza",
+		description = "Replace Ver Sinhaza",
+		section = SECTION_DRAKANS,
+		position = POSITION_DRAKANS + 1
+	)
+	default String replacementVerSinhaza()
+	{
+		return "Theatre of Blood";
+	}
+
+	@ConfigItem(
+		keyName = "replacementDarkmeyer",
+		name = "Darkmeyer",
+		description = "Replace Darkmeyer",
+		section = SECTION_DRAKANS,
+		position = POSITION_DRAKANS + 2
+	)
+	default String replacementDarkmeyer()
+	{
+		return "Vampyre City";
+	}
+
+	@ConfigItem(
+		keyName = "replacementSlepe",
+		name = "Slepe",
+		description = "Replace Slepe",
+		section = SECTION_DRAKANS,
+		position = POSITION_DRAKANS + 3
+	)
+	default String replacementSlepe()
+	{
+		return "Nightmare";
 	}
 }
