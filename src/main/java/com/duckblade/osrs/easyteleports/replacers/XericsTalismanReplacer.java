@@ -7,8 +7,10 @@ import static com.duckblade.osrs.easyteleports.EasyTeleportsConfig.SECTION_ENABL
 import static com.duckblade.osrs.easyteleports.EasyTeleportsConfig.SECTION_XERICS_TALISMAN;
 import com.duckblade.osrs.easyteleports.TeleportReplacement;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.Getter;
@@ -22,7 +24,10 @@ import net.runelite.client.config.ConfigItem;
 public class XericsTalismanReplacer implements Replacer
 {
 
-	private static final String TALISMAN_ADVENTURE_LOG_HEADER_PREFIX = "The talisman has";
+	private static final Set<String> TALISMAN_ADVENTURE_LOG_HEADER_PREFIXES = ImmutableSet.of(
+		"The talisman has",
+		"Xeric's Talisman teleports"
+	);
 
 	private final List<TeleportReplacement> replacements = new ArrayList<>(5);
 
@@ -53,7 +58,8 @@ public class XericsTalismanReplacer implements Replacer
 	{
 		return root != null &&
 			root.getText() != null &&
-			root.getText().startsWith(TALISMAN_ADVENTURE_LOG_HEADER_PREFIX);
+			TALISMAN_ADVENTURE_LOG_HEADER_PREFIXES.stream()
+				.anyMatch(s -> root.getText().startsWith(s));
 	}
 
 	@Override
