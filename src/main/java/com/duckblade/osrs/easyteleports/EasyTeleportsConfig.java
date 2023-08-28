@@ -16,6 +16,7 @@ public interface EasyTeleportsConfig extends Config
 	int POSITION_XERICS_TALISMAN = POSITION_KHAREDSTS_MEMOIRS + 100;
 	int POSITION_RING_OF_DUELING = POSITION_XERICS_TALISMAN + 100;
 	int POSITION_DIARY_CAPE = POSITION_RING_OF_DUELING + 100;
+	int POSITION_SLAYER_RING = POSITION_DIARY_CAPE + 100;
 
 	@ConfigSection(
 		name = "Toggles",
@@ -84,10 +85,22 @@ public interface EasyTeleportsConfig extends Config
 		return false;
 	}
 
+	@ConfigItem(
+		section = SECTION_ENABLE_FLAGS,
+		keyName = "enableSlayerRing",
+		name = "Slayer ring",
+		description = "Replace teleport entries on the Slayer ring with new names.",
+		position = POSITION_FLAGS + (POSITION_SLAYER_RING / 100)
+	)
+	default boolean enableSlayerRing()
+	{
+		return false;
+	}
+
 	@ConfigSection(
 		name = "Pharaoh's sceptre",
 		description = "Replacement text for the Pharaoh's sceptre teleport locations.",
-		position = 200,
+		position = POSITION_PHARAOHS_SCEPTRE,
 		closedByDefault = true
 	)
 	String SECTION_PHARAOHS_SCEPTRE = "sectionCustomReplacements"; // legacy config name
@@ -518,5 +531,73 @@ public interface EasyTeleportsConfig extends Config
 	default String replacementTwiggy()
 	{
 		return "Diary Master: Draynor Village";
+	}
+
+	@ConfigSection(
+		name = "Slayer ring",
+		description = "Replacement text for the Slayer ring teleport locations.",
+		position = POSITION_SLAYER_RING,
+		closedByDefault = true
+	)
+	String SECTION_SLAYER_RING = "sectionSlayerRing";
+
+	@ConfigItem(
+		keyName = "replacementSlayerStronghold",
+		name = "Stronghold Slayer Cave",
+		description = "Replace Stronghold Slayer Cave",
+		section = SECTION_SLAYER_RING,
+		position = POSITION_SLAYER_RING + 1
+	)
+	default String replacementSlayerStronghold()
+	{
+		return "Gnome Stronghold Caves";
+	}
+
+	@ConfigItem(
+		keyName = "replacementSlayerTower",
+		name = "Morytania Slayer Tower",
+		description = "Replace Morytania Slayer Tower",
+		section = SECTION_SLAYER_RING,
+		position = POSITION_SLAYER_RING + 2
+	)
+	default String replacementSlayerTower()
+	{
+		return "Slayer Tower";
+	}
+
+	@ConfigItem(
+		keyName = "replacementSlayerRellekka",
+		name = "Rellekka Slayer Caves",
+		description = "Replace Rellekka Slayer Caves",
+		section = SECTION_SLAYER_RING,
+		position = POSITION_SLAYER_RING + 3
+	)
+	default String replacementSlayerRellekka()
+	{
+		return "Rellekka Caves";
+	}
+
+	@ConfigItem(
+		keyName = "replacementTarns",
+		name = "Tarn's Lair",
+		description = "Replace Tarn's Lair",
+		section = SECTION_SLAYER_RING,
+		position = POSITION_SLAYER_RING + 4
+	)
+	default String replacementTarns()
+	{
+		return "Haunted Mine";
+	}
+
+	@ConfigItem(
+		keyName = "replacementDarkBeasts",
+		name = "Dark Beasts",
+		description = "Replace Dark Beasts",
+		section = SECTION_SLAYER_RING,
+		position = POSITION_SLAYER_RING + 5
+	)
+	default String replacementDarkBeasts()
+	{
+		return "ME2 Caves";
 	}
 }
