@@ -1,10 +1,6 @@
 package com.duckblade.osrs.easyteleports.replacers;
 
 import com.duckblade.osrs.easyteleports.EasyTeleportsConfig;
-import static com.duckblade.osrs.easyteleports.EasyTeleportsConfig.POSITION_FLAGS;
-import static com.duckblade.osrs.easyteleports.EasyTeleportsConfig.POSITION_XERICS_TALISMAN;
-import static com.duckblade.osrs.easyteleports.EasyTeleportsConfig.SECTION_ENABLE_FLAGS;
-import static com.duckblade.osrs.easyteleports.EasyTeleportsConfig.SECTION_XERICS_TALISMAN;
 import com.duckblade.osrs.easyteleports.TeleportReplacement;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -17,11 +13,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.widgets.Widget;
-import net.runelite.client.config.ConfigItem;
 
 @Singleton
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class XericsTalismanReplacer implements Replacer
+public class XericsTalisman implements Replacer
 {
 
 	private static final Set<String> TALISMAN_ADVENTURE_LOG_HEADER_PREFIXES = ImmutableSet.of(

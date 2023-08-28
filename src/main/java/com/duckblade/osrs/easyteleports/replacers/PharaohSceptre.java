@@ -14,12 +14,12 @@ import net.runelite.api.widgets.Widget;
 
 @Singleton
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class RingOfDuelingReplacer implements Replacer
+public class PharaohSceptre implements Replacer
 {
 
-	private static final String RING_OF_DUELING_DIALOGUE_HEADER = "Where would you like to teleport to?";
+	private static final String SCEPTRE_DIALOG_HEADER = "Where would you like to teleport to?";
 
-	private final List<TeleportReplacement> replacements = new ArrayList<>(5);
+	private final List<TeleportReplacement> replacements = new ArrayList<>(4);
 
 	@Getter(onMethod = @__(@Override))
 	private boolean enabled = false;
@@ -27,14 +27,13 @@ public class RingOfDuelingReplacer implements Replacer
 	@Override
 	public void onConfigChanged(EasyTeleportsConfig config)
 	{
-		this.enabled = config.enableRingOfDueling();
+		this.enabled = config.enablePharaohSceptre();
 
 		replacements.clear();
-		replacements.add(new TeleportReplacement("PvP Arena", config.replacementPvPArena()));
-		replacements.add(new TeleportReplacement("Al Kharid PvP Arena", config.replacementPvPArena()));
-		replacements.add(new TeleportReplacement("Castle Wars", config.replacementCastleWars()));
-		replacements.add(new TeleportReplacement("Castle Wars Arena", config.replacementCastleWars()));
-		replacements.add(new TeleportReplacement("Ferox Enclave", config.replacementFeroxEnclave()));
+		replacements.add(new TeleportReplacement("Jalsavrah", config.replacementJalsavrah()));
+		replacements.add(new TeleportReplacement("Jaleustrophos", config.replacementJaleustrophos()));
+		replacements.add(new TeleportReplacement("Jaldraocht", config.replacementJaldraocht()));
+		replacements.add(new TeleportReplacement("Jaltevas", config.replacementJaltevas()));
 	}
 
 	@Override
@@ -49,12 +48,12 @@ public class RingOfDuelingReplacer implements Replacer
 		Widget[] children = root.getChildren();
 		return children != null &&
 			children.length >= 5 &&
-			RING_OF_DUELING_DIALOGUE_HEADER.equals(children[0].getText());
+			SCEPTRE_DIALOG_HEADER.equals(children[0].getText());
 	}
 
 	@Override
 	public EquipmentInventorySlot getEquipmentSlot()
 	{
-		return EquipmentInventorySlot.RING;
+		return EquipmentInventorySlot.WEAPON;
 	}
 }

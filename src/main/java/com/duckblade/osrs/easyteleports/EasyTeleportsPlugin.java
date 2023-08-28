@@ -1,14 +1,15 @@
 package com.duckblade.osrs.easyteleports;
 
-import com.duckblade.osrs.easyteleports.replacers.KharedstMemoirsReplacer;
-import com.duckblade.osrs.easyteleports.replacers.PharaohSceptreReplacer;
+import com.duckblade.osrs.easyteleports.replacers.KharedstMemoirs;
+import com.duckblade.osrs.easyteleports.replacers.PharaohSceptre;
 import com.duckblade.osrs.easyteleports.replacers.Replacer;
-import com.duckblade.osrs.easyteleports.replacers.RingOfDuelingReplacer;
-import com.duckblade.osrs.easyteleports.replacers.XericsTalismanReplacer;
+import com.duckblade.osrs.easyteleports.replacers.RingOfDueling;
+import com.duckblade.osrs.easyteleports.replacers.XericsTalisman;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
+import com.google.inject.Binder;
 import com.google.inject.Provides;
-import java.util.HashSet;
+import com.google.inject.multibindings.Multibinder;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -69,54 +70,21 @@ public class EasyTeleportsPlugin extends Plugin
 	private EasyTeleportsConfig config;
 
 	@Inject
-	private PharaohSceptreReplacer pharaohSceptreReplacer;
+	private Set<Replacer> replacers;
 
-	@Inject
-	private KharedstMemoirsReplacer kharedstMemoirsReplacer;
-
-	@Inject
-	private XericsTalismanReplacer xericsTalismanReplacer;
-
-	@Inject
-	private RingOfDuelingReplacer ringOfDuelingReplacer;
-
-	private final Set<Replacer> replacers = new HashSet<>();
-
-	private static <T> void applyReplacement(List<TeleportReplacement> replacements, T entry, Function<T, String> getter, BiConsumer<T, String> setter)
+	@Override
+	public void configure(Binder binder)
 	{
-		String entryText = null;
-		try
-		{
-			entryText = getter.apply(entry);
-			if (Strings.isNullOrEmpty(entryText))
-			{
-				return;
-			}
-
-			for (TeleportReplacement replacement : replacements)
-			{
-				if (entryText.contains(replacement.getOriginal()))
-				{
-					String newText = entryText.replace(replacement.getOriginal(), replacement.getReplacement());
-					setter.accept(entry, newText);
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			log.error("Failed to replace option [{}] on entry [{}]", entryText, entry.toString());
-		}
+		Multibinder<Replacer> replacers = Multibinder.newSetBinder(binder, Replacer.class);
+		replacers.addBinding().to(KharedstMemoirs.class);
+		replacers.addBinding().to(PharaohSceptre.class);
+		replacers.addBinding().to(RingOfDueling.class);
+		replacers.addBinding().to(XericsTalisman.class);
 	}
 
 	@Override
 	protected void startUp()
 	{
-		this.replacers.clear();
-		this.replacers.add(pharaohSceptreReplacer);
-		this.replacers.add(kharedstMemoirsReplacer);
-		this.replacers.add(xericsTalismanReplacer);
-		this.replacers.add(ringOfDuelingReplacer);
-
 		propagateConfig();
 	}
 
@@ -223,6 +191,32 @@ public class EasyTeleportsPlugin extends Plugin
 	public EasyTeleportsConfig provideConfig(ConfigManager configManager)
 	{
 		return configManager.getConfig(EasyTeleportsConfig.class);
+	}
+
+	private static <T> void applyReplacement(List<TeleportReplacement> replacements, T entry, Function<T, String> getter, BiConsumer<T, String> setter)
+	{
+		String entryText = null;
+		try
+		{
+			entryText = getter.apply(entry);
+			if (Strings.isNullOrEmpty(entryText))
+			{
+				return;
+			}
+
+			for (TeleportReplacement replacement : replacements)
+			{
+				if (entryText.contains(replacement.getOriginal()))
+				{
+					String newText = entryText.replace(replacement.getOriginal(), replacement.getReplacement());
+					setter.accept(entry, newText);
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			log.error("Failed to replace option [{}] on entry [{}]", entryText, entry.toString());
+		}
 	}
 
 }

@@ -14,8 +14,10 @@ import net.runelite.api.widgets.Widget;
 
 @Singleton
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
-public class KharedstMemoirsReplacer implements Replacer
+public class RingOfDueling implements Replacer
 {
+
+	private static final String RING_OF_DUELING_DIALOGUE_HEADER = "Where would you like to teleport to?";
 
 	private final List<TeleportReplacement> replacements = new ArrayList<>(5);
 
@@ -25,14 +27,14 @@ public class KharedstMemoirsReplacer implements Replacer
 	@Override
 	public void onConfigChanged(EasyTeleportsConfig config)
 	{
-		this.enabled = config.enableKharedstsMemoirs();
+		this.enabled = config.enableRingOfDueling();
 
 		replacements.clear();
-		replacements.add(new TeleportReplacement("Lunch by the Lancalliums", config.replacementLancalliums()));
-		replacements.add(new TeleportReplacement("The Fisher's Flute", config.replacementFishers()));
-		replacements.add(new TeleportReplacement("History and Hearsay", config.replacementHistory()));
-		replacements.add(new TeleportReplacement("Jewellery of Jubilation", config.replacementJubilation()));
-		replacements.add(new TeleportReplacement("A Dark Disposition", config.replacementDisposition()));
+		replacements.add(new TeleportReplacement("PvP Arena", config.replacementPvPArena()));
+		replacements.add(new TeleportReplacement("Al Kharid PvP Arena", config.replacementPvPArena()));
+		replacements.add(new TeleportReplacement("Castle Wars", config.replacementCastleWars()));
+		replacements.add(new TeleportReplacement("Castle Wars Arena", config.replacementCastleWars()));
+		replacements.add(new TeleportReplacement("Ferox Enclave", config.replacementFeroxEnclave()));
 	}
 
 	@Override
@@ -42,8 +44,17 @@ public class KharedstMemoirsReplacer implements Replacer
 	}
 
 	@Override
+	public boolean isApplicableToDialog(Widget root)
+	{
+		Widget[] children = root.getChildren();
+		return children != null &&
+			children.length >= 5 &&
+			RING_OF_DUELING_DIALOGUE_HEADER.equals(children[0].getText());
+	}
+
+	@Override
 	public EquipmentInventorySlot getEquipmentSlot()
 	{
-		return EquipmentInventorySlot.SHIELD;
+		return EquipmentInventorySlot.RING;
 	}
 }
