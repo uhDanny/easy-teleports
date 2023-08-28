@@ -1,5 +1,6 @@
 package com.duckblade.osrs.easyteleports;
 
+import com.duckblade.osrs.easyteleports.replacers.DiaryCape;
 import com.duckblade.osrs.easyteleports.replacers.KharedstMemoirs;
 import com.duckblade.osrs.easyteleports.replacers.PharaohSceptre;
 import com.duckblade.osrs.easyteleports.replacers.Replacer;
@@ -78,6 +79,7 @@ public class EasyTeleportsPlugin extends Plugin
 	public void configure(Binder binder)
 	{
 		Multibinder<Replacer> replacers = Multibinder.newSetBinder(binder, Replacer.class);
+		replacers.addBinding().to(DiaryCape.class);
 		replacers.addBinding().to(KharedstMemoirs.class);
 		replacers.addBinding().to(PharaohSceptre.class);
 		replacers.addBinding().to(RingOfDueling.class);
