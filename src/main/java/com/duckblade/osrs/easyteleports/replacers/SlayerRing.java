@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
+import net.runelite.api.ItemID;
 import net.runelite.api.widgets.Widget;
 
 public class SlayerRing implements Replacer
@@ -46,4 +47,19 @@ public class SlayerRing implements Replacer
 			SLAYER_RING_DIALOG_HEADER.equals(children[0].getText());
 	}
 
+	@Override
+	public boolean isApplicableToInventory(int itemId)
+	{
+		// There is no ItemMapping for this right now
+
+		return itemId == ItemID.SLAYER_RING_1
+			|| itemId == ItemID.SLAYER_RING_2
+			|| itemId == ItemID.SLAYER_RING_3
+			|| itemId == ItemID.SLAYER_RING_4
+			|| itemId == ItemID.SLAYER_RING_5
+			|| itemId == ItemID.SLAYER_RING_6
+			|| itemId == ItemID.SLAYER_RING_7
+			|| itemId == ItemID.SLAYER_RING_8
+			|| itemId == ItemID.SLAYER_RING_ETERNAL;
+	}
 }

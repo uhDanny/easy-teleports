@@ -12,6 +12,7 @@ import javax.inject.Singleton;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.EquipmentInventorySlot;
+import net.runelite.api.ItemID;
 import net.runelite.api.widgets.Widget;
 
 @Singleton
@@ -55,6 +56,12 @@ public class XericsTalisman implements Replacer
 			root.getText() != null &&
 			TALISMAN_ADVENTURE_LOG_HEADER_PREFIXES.stream()
 				.anyMatch(s -> root.getText().startsWith(s));
+	}
+
+	@Override
+	public boolean isApplicableToInventory(int itemId)
+	{
+		return itemId == ItemID.XERICS_TALISMAN;
 	}
 
 	@Override

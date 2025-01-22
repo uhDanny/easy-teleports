@@ -4,13 +4,16 @@ import com.duckblade.osrs.easyteleports.EasyTeleportsConfig;
 import com.duckblade.osrs.easyteleports.TeleportReplacement;
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.EquipmentInventorySlot;
+import net.runelite.api.ItemID;
 import net.runelite.api.widgets.Widget;
+import net.runelite.client.game.ItemMapping;
 
 @Singleton
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
@@ -55,5 +58,16 @@ public class PharaohSceptre implements Replacer
 	public EquipmentInventorySlot getEquipmentSlot()
 	{
 		return EquipmentInventorySlot.WEAPON;
+	}
+
+	@Override
+	public boolean isApplicableToInventory(int itemId)
+	{
+		if (itemId == ItemID.PHARAOHS_SCEPTRE_UNCHARGED)
+		{
+			return false;
+		}
+		Collection<ItemMapping> itemMappings = ItemMapping.map(itemId);
+		return itemMappings != null && itemMappings.contains(ItemMapping.ITEM_PHARAOHS_SCEPTRE);
 	}
 }

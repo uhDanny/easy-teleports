@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.EquipmentInventorySlot;
+import net.runelite.api.ItemID;
 import net.runelite.api.widgets.Widget;
 
 @Singleton
@@ -64,5 +65,11 @@ public class KharedstMemoirs implements Replacer
 	public EquipmentInventorySlot getEquipmentSlot()
 	{
 		return EquipmentInventorySlot.SHIELD;
+	}
+
+	@Override
+	public boolean isApplicableToInventory(int itemId)
+	{
+		return itemId == ItemID.KHAREDSTS_MEMOIRS || itemId == ItemID.BOOK_OF_THE_DEAD;
 	}
 }

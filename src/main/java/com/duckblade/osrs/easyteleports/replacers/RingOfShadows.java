@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.EquipmentInventorySlot;
+import net.runelite.api.ItemID;
 import net.runelite.api.widgets.Widget;
 
 @Singleton
@@ -59,5 +60,11 @@ public class RingOfShadows implements Replacer
 	public EquipmentInventorySlot getEquipmentSlot()
 	{
 		return EquipmentInventorySlot.RING;
+	}
+
+	@Override
+	public boolean isApplicableToInventory(int itemId)
+	{
+		return itemId == ItemID.RING_OF_SHADOWS;
 	}
 }
