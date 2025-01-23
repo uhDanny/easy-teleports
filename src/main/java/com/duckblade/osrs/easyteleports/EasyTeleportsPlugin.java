@@ -124,7 +124,7 @@ public class EasyTeleportsPlugin extends Plugin
 		{
 			//InterfaceID.DIALOG_OPTION
 			Widget chatbox = client.getWidget(ComponentID.DIALOG_OPTION_OPTIONS);
-			clientThread.invokeLater(() -> replaceWidgetChildren(chatbox, Replacer::isApplicableToDialog));
+			clientThread.invokeLater(() -> replaceWidgetChildren(chatbox, Replacer::isApplicableToDialog, config.enableShadowedText()));
 		}
 
 		// the scroll thing that xeric's talisman uses
@@ -172,6 +172,11 @@ public class EasyTeleportsPlugin extends Plugin
 
 	private void replaceWidgetChildren(Widget root, BiPredicate<Replacer, Widget> filterSelector)
 	{
+		replaceWidgetChildren(root, filterSelector, false);
+	}
+
+	private void replaceWidgetChildren(Widget root, BiPredicate<Replacer, Widget> filterSelector, boolean shadowedText)
+	{
 		Widget[] children = root.getChildren();
 		if (children == null)
 		{
@@ -181,7 +186,7 @@ public class EasyTeleportsPlugin extends Plugin
 		List<TeleportReplacement> applicableReplacements = getApplicableReplacements(r -> filterSelector.test(r, root));
 		for (Widget child : children)
 		{
-			applyReplacement(applicableReplacements, child, Widget::getText, Widget::setText);
+			applyReplacement(applicableReplacements, child, Widget::getText, Widget::setText, shadowedText);
 		}
 	}
 
@@ -237,6 +242,11 @@ public class EasyTeleportsPlugin extends Plugin
 
 	private static <T> void applyReplacement(List<TeleportReplacement> replacements, T entry, Function<T, String> getter, BiConsumer<T, String> setter)
 	{
+		applyReplacement(replacements, entry, getter, setter, false);
+	}
+
+	private static <T> void applyReplacement(List<TeleportReplacement> replacements, T entry, Function<T, String> getter, BiConsumer<T, String> setter, boolean shadowedText)
+	{
 		String entryText = null;
 		try
 		{
@@ -250,6 +260,12 @@ public class EasyTeleportsPlugin extends Plugin
 			{
 				if (entryText.contains(replacement.getOriginal()))
 				{
+					if (replacement.getReplacement().contains("</col>") && shadowedText && entry instanceof Widget)
+					{
+						Widget wEntry = ((Widget) entry);
+						wEntry.setTextShadowed(true);
+						wEntry.revalidate();
+					}
 					String newText = entryText.replace(replacement.getOriginal(), replacement.getReplacement());
 					setter.accept(entry, newText);
 				}

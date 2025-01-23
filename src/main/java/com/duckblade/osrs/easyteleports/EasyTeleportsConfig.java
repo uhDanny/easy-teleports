@@ -20,6 +20,7 @@ public interface EasyTeleportsConfig extends Config
 	int POSITION_DRAKANS = POSITION_SLAYER_RING + 100;
 	int POSITION_RING_OF_SHADOWS = POSITION_DRAKANS + 100;
 	int POSITION_NECKLACE_OF_PASSAGE = POSITION_RING_OF_SHADOWS + 100;
+	int POSITION_TEXT_SHADOWED = POSITION_NECKLACE_OF_PASSAGE + 100;
 
 	@ConfigSection(
 		name = "Toggles",
@@ -134,6 +135,18 @@ public interface EasyTeleportsConfig extends Config
 	default boolean enableNecklaceOfPassage()
 	{
 		return false;
+	}
+
+	@ConfigItem(
+		section = SECTION_ENABLE_FLAGS,
+		keyName = "enableShadowedText",
+		name = "Shadow Dialogue Text",
+		description = "Puts a shadow around the text in dialogues (only when using coloured text) to make them stand out more.",
+		position = POSITION_FLAGS + (POSITION_TEXT_SHADOWED / 100)
+	)
+	default boolean enableShadowedText()
+	{
+		return true;
 	}
 
 	@ConfigSection(
