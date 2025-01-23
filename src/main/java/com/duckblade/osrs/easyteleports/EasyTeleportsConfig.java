@@ -19,6 +19,7 @@ public interface EasyTeleportsConfig extends Config
 	int POSITION_SLAYER_RING = POSITION_DIARY_CAPE + 100;
 	int POSITION_DRAKANS = POSITION_SLAYER_RING + 100;
 	int POSITION_RING_OF_SHADOWS = POSITION_DRAKANS + 100;
+	int POSITION_NECKLACE_OF_PASSAGE = POSITION_RING_OF_SHADOWS + 100;
 
 	@ConfigSection(
 		name = "Toggles",
@@ -119,6 +120,18 @@ public interface EasyTeleportsConfig extends Config
 		position = POSITION_FLAGS + (POSITION_RING_OF_SHADOWS / 100)
 	)
 	default boolean enableRingOfShadows()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		section = SECTION_ENABLE_FLAGS,
+		keyName = "enableNecklaceOfPassage",
+		name = "Necklace Of Passage",
+		description = "Replace teleport entries on the Necklace Of Passage with new names.",
+		position = POSITION_FLAGS + (POSITION_NECKLACE_OF_PASSAGE / 100)
+	)
+	default boolean enableNecklaceOfPassage()
 	{
 		return false;
 	}
@@ -749,5 +762,49 @@ public interface EasyTeleportsConfig extends Config
 	default String replacementStranglewood()
 	{
 		return "<col=E36969>Vardorvis</col>";
+	}
+
+	@ConfigSection(
+		name = "Necklace Of Passage",
+		description = "Replacement text for the Necklace of Passage teleport locations.",
+		position = POSITION_NECKLACE_OF_PASSAGE,
+		closedByDefault = true
+	)
+	String SECTION_NECKLACE_OF_PASSAGE = "sectionNecklaceOfPassage";
+
+	@ConfigItem(
+		keyName = "replacementWizardTower",
+		name = "Wizard's Tower",
+		description = "Replace Wizard's Tower",
+		section = SECTION_NECKLACE_OF_PASSAGE,
+		position = POSITION_NECKLACE_OF_PASSAGE + 1
+	)
+	default String replacementWizardsTower()
+	{
+		return "Wizard's Tower";
+	}
+
+	@ConfigItem(
+		keyName = "replacementOutpost",
+		name = "The Outpost",
+		description = "Replace The Outpost",
+		section = SECTION_NECKLACE_OF_PASSAGE,
+		position = POSITION_NECKLACE_OF_PASSAGE + 2
+	)
+	default String replacementOutpost()
+	{
+		return "NW of West Ardougne";
+	}
+
+	@ConfigItem(
+		keyName = "replacementEagleEyrie",
+		name = "Eagle's Eyrie",
+		description = "Replace Eagle's Eyrie",
+		section = SECTION_NECKLACE_OF_PASSAGE,
+		position = POSITION_NECKLACE_OF_PASSAGE + 3
+	)
+	default String replacementEagleEyrie()
+	{
+		return "NW of Uzer (Desert)";
 	}
 }
