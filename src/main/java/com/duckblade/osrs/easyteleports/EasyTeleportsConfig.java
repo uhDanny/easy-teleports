@@ -325,14 +325,14 @@ public interface EasyTeleportsConfig extends Config
 
 	@ConfigItem(
 		keyName = "replacementPvPArena",
-		name = "PvP Arena",
-		description = "Replace PvP Arena",
+		name = "Emir's Arena",
+		description = "Replace Emir's Arena",
 		section = SECTION_RING_OF_DUELING,
 		position = POSITION_RING_OF_DUELING + 1
 	)
-	default String replacementPvPArena()
+	default String replacementEmirsArena()
 	{
-		return "Duel Arena";
+		return "Emir's Arena";
 	}
 
 	@ConfigItem(
@@ -357,6 +357,18 @@ public interface EasyTeleportsConfig extends Config
 	default String replacementFeroxEnclave()
 	{
 		return "Ferox Enclave";
+	}
+
+	@ConfigItem(
+		keyName = "replacementFortisColosseum",
+		name = "Fortis Colosseum",
+		description = "Replace Fortis Colosseum",
+		section = SECTION_RING_OF_DUELING,
+		position = POSITION_RING_OF_DUELING + 4
+	)
+	default String replacementFortisColosseum()
+	{
+		return "Fortis Colosseum";
 	}
 
 	@ConfigSection(
