@@ -123,7 +123,8 @@ public class EasyTeleportsPlugin extends Plugin
 		if (e.getGroupId() == InterfaceID.DIALOG_OPTION)
 		{
 			//InterfaceID.DIALOG_OPTION
-			clientThread.invokeLater(() -> replaceWidgetChildren(InterfaceID.DIALOG_OPTION, ComponentID.DIALOG_OPTION_OPTIONS, Replacer::isApplicableToDialog));
+			Widget chatbox = client.getWidget(ComponentID.DIALOG_OPTION_OPTIONS);
+			clientThread.invokeLater(() -> replaceWidgetChildren(chatbox, Replacer::isApplicableToDialog));
 		}
 
 		// the scroll thing that xeric's talisman uses
@@ -166,6 +167,11 @@ public class EasyTeleportsPlugin extends Plugin
 			return;
 		}
 
+		replaceWidgetChildren(root, filterSelector);
+	}
+
+	private void replaceWidgetChildren(Widget root, BiPredicate<Replacer, Widget> filterSelector)
+	{
 		Widget[] children = root.getChildren();
 		if (children == null)
 		{
