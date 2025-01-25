@@ -196,7 +196,7 @@ public class EasyTeleportsPlugin extends Plugin
 		if (e.getActionParam1() == ACTION_PARAM_1_INVENTORY)
 		{
 			List<TeleportReplacement> applicableReplacements = getApplicableReplacements(r -> r.isApplicableToInventory(e.getMenuEntry().getItemId()));
-			applyReplacement(applicableReplacements, e.getMenuEntry(), MenuEntry::getOption, MenuEntry::setOption);
+			clientThread.invokeLater(() -> applyReplacement(applicableReplacements, e.getMenuEntry(), MenuEntry::getOption, MenuEntry::setOption));
 			return;
 		}
 
