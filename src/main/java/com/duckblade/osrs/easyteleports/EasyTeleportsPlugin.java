@@ -260,7 +260,7 @@ public class EasyTeleportsPlugin extends Plugin
 			{
 				if (entryText.contains(replacement.getOriginal()))
 				{
-					if (replacement.getReplacement().contains("</col>") && shadowedText && entry instanceof Widget)
+					if ((replacement.getReplacement().contains("</col>") || replacement.getReplacement().contains("<col=")) && shadowedText && entry instanceof Widget)
 					{
 						Widget wEntry = ((Widget) entry);
 						wEntry.setTextShadowed(true);
