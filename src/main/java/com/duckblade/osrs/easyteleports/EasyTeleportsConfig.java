@@ -222,7 +222,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementLancalliums()
 	{
-		return "<col=00ff00>Hosidius";
+		return "<col=2aae4f>Hosidius</col>";
 	}
 
 	@ConfigItem(
@@ -234,7 +234,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementFishers()
 	{
-		return "<col=00ffff>Port Piscarilius";
+		return "<col=2a94ae>Port Piscarilius</col>";
 	}
 
 	@ConfigItem(
@@ -246,7 +246,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementHistory()
 	{
-		return "<col=ff0000>Shayzien";
+		return "<col=ae2a2a>Shayzien</col>";
 	}
 
 	@ConfigItem(
@@ -258,7 +258,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementJubilation()
 	{
-		return "<col=ff8800>Lovakengj";
+		return "<col=ae842a>Lovakengj</col>";
 	}
 
 	@ConfigItem(
@@ -270,7 +270,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementDisposition()
 	{
-		return "<col=8800ff>Arceuus";
+		return "<col=8800ff>Arceuus</col>";
 	}
 
 	@ConfigSection(
@@ -726,7 +726,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementAncientVault()
 	{
-		return "<col=A8A12A>DT2 Vault</col>";
+		return "<col=aea92a>DT2 Vault</col>";
 	}
 
 	@ConfigItem(
@@ -738,7 +738,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementGhorrockDungeon()
 	{
-		return "<col=39C8EA>Duke Sucellus</col>";
+		return "<col=2a94ae>Duke Sucellus</col>";
 	}
 
 	@ConfigItem(
@@ -750,7 +750,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementScar()
 	{
-		return "<col=E7BE8D>Leviathan</col>";
+		return "<col=ae2a43>Leviathan</col>";
 	}
 
 	@ConfigItem(
@@ -762,7 +762,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementLassarUndercity()
 	{
-		return "<col=926AE8>Whisperer</col>";
+		return "<col=5f2aae>Whisperer</col>";
 	}
 
 	@ConfigItem(
@@ -774,7 +774,7 @@ public interface EasyTeleportsConfig extends Config
 	)
 	default String replacementStranglewood()
 	{
-		return "<col=E36969>Vardorvis</col>";
+		return "<col=ae2a2a>Vardorvis</col>";
 	}
 
 	@ConfigSection(
