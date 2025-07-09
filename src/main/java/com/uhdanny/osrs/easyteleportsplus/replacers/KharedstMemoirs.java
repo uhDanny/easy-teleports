@@ -1,7 +1,7 @@
-package com.duckblade.osrs.easyteleports.replacers;
+package com.uhdanny.osrs.easyteleportsplus.replacers;
 
-import com.duckblade.osrs.easyteleports.EasyTeleportsConfig;
-import com.duckblade.osrs.easyteleports.TeleportReplacement;
+import com.uhdanny.osrs.easyteleportsplus.EasyTeleportsPlusConfig;
+import com.uhdanny.osrs.easyteleportsplus.TeleportReplacement;
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class KharedstMemoirs implements Replacer
 	private boolean enabled = false;
 
 	@Override
-	public void onConfigChanged(EasyTeleportsConfig config)
+	public void onConfigChanged(EasyTeleportsPlusConfig config)
 	{
 		this.enabled = config.enableKharedstsMemoirs();
 		replacements.clear();

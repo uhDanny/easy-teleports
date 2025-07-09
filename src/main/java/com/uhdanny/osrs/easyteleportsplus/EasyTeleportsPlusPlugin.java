@@ -1,15 +1,6 @@
-package com.duckblade.osrs.easyteleports;
+package com.uhdanny.osrs.easyteleportsplus;
 
-import com.duckblade.osrs.easyteleports.replacers.DiaryCape;
-import com.duckblade.osrs.easyteleports.replacers.DrakansMedallion;
-import com.duckblade.osrs.easyteleports.replacers.KharedstMemoirs;
-import com.duckblade.osrs.easyteleports.replacers.NecklaceOfPassage;
-import com.duckblade.osrs.easyteleports.replacers.PharaohSceptre;
-import com.duckblade.osrs.easyteleports.replacers.Replacer;
-import com.duckblade.osrs.easyteleports.replacers.RingOfDueling;
-import com.duckblade.osrs.easyteleports.replacers.RingOfShadows;
-import com.duckblade.osrs.easyteleports.replacers.SlayerRing;
-import com.duckblade.osrs.easyteleports.replacers.XericsTalisman;
+import com.uhdanny.osrs.easyteleportsplus.replacers.*;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Binder;
@@ -43,11 +34,12 @@ import net.runelite.client.plugins.PluginDescriptor;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Easy Teleports",
-	tags = {"Pharaoh's", "Sceptre", "xeric's", "talisman", "kharedst's", "memoirs"}
+	name = "Easy Teleports Plus",
+	description = "Replaces teleport menu entries with more recognizable names for various items.",
+	tags = {"Pharaoh's", "Sceptre", "xeric's", "talisman", "kharedst's", "memoirs", "teleports", "Pendant of Ates"}
 )
 @Singleton
-public class EasyTeleportsPlugin extends Plugin
+public class EasyTeleportsPlusPlugin extends Plugin
 {
 
 	private static final Map<Integer, EquipmentInventorySlot> ACTION_PARAM_1_TO_EQUIPMENT_SLOT =
@@ -76,7 +68,7 @@ public class EasyTeleportsPlugin extends Plugin
 	private ClientThread clientThread;
 
 	@Inject
-	private EasyTeleportsConfig config;
+	private EasyTeleportsPlusConfig config;
 
 	@Inject
 	private Set<Replacer> replacers;
@@ -94,6 +86,7 @@ public class EasyTeleportsPlugin extends Plugin
 		replacers.addBinding().to(SlayerRing.class);
 		replacers.addBinding().to(XericsTalisman.class);
 		replacers.addBinding().to(NecklaceOfPassage.class);
+		replacers.addBinding().to(PendantOfAtes.class);
 	}
 
 	@Override
@@ -105,7 +98,7 @@ public class EasyTeleportsPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged e)
 	{
-		if (e.getGroup().equals(EasyTeleportsConfig.CONFIG_GROUP))
+		if (e.getGroup().equals(EasyTeleportsPlusConfig.CONFIG_GROUP))
 		{
 			propagateConfig();
 		}
@@ -235,9 +228,9 @@ public class EasyTeleportsPlugin extends Plugin
 	}
 
 	@Provides
-	public EasyTeleportsConfig provideConfig(ConfigManager configManager)
+	public EasyTeleportsPlusConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(EasyTeleportsConfig.class);
+		return configManager.getConfig(EasyTeleportsPlusConfig.class);
 	}
 
 	private static <T> void applyReplacement(List<TeleportReplacement> replacements, T entry, Function<T, String> getter, BiConsumer<T, String> setter)

@@ -1,7 +1,6 @@
-# Easy Teleports
+# Easy Teleports Plus
 
-Replaces difficult-to-remember teleport options in-game
-with custom values, defaulting to more sensible values.
+# Replaces teleport menu entries with more recognizable names for various items!
 
 Within the config, you can enable and disable whole items,
 or expand the collapsible sections to change the replacements.

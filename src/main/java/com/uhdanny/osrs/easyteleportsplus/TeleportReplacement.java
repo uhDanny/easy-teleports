@@ -1,4 +1,4 @@
-package com.duckblade.osrs.easyteleports;
+package com.uhdanny.osrs.easyteleportsplus;
 
 import lombok.Value;
 
