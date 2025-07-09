@@ -34,7 +34,7 @@ dependencies {
     testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
 }
 
-group = 'com.uhdanny.osrs'
+group = 'com.duckblade.osrs'
 version = '2.3.0'
 sourceCompatibility = '1.8'
 
