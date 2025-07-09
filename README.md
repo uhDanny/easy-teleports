@@ -17,4 +17,4 @@ For those who used earlier versions of Easy Teleports, this plugin looks and fun
 ![img.png](README_config.png)
 
 ## Credits
-This plugin was originally developed by LlemonDuck and all credits to the plugin go to them.
+This plugin was originally developed by LlemonDuck & DapperMickie and all credits to the plugin go to them.
