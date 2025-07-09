@@ -1,7 +1,7 @@
-package com.uhdanny.osrs.easyteleportsplus.replacers;
+package com.duckblade.osrs.easyteleports.replacers;
 
-import com.uhdanny.osrs.easyteleportsplus.EasyTeleportsPlusConfig;
-import com.uhdanny.osrs.easyteleportsplus.TeleportReplacement;
+import com.duckblade.osrs.easyteleports.EasyTeleportsConfig;
+import com.duckblade.osrs.easyteleports.TeleportReplacement;
 import com.google.common.collect.ImmutableList;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,7 +28,7 @@ public class PharaohSceptre implements Replacer
 	private boolean enabled = false;
 
 	@Override
-	public void onConfigChanged(EasyTeleportsPlusConfig config)
+	public void onConfigChanged(EasyTeleportsConfig config)
 	{
 		this.enabled = config.enablePharaohSceptre();
 

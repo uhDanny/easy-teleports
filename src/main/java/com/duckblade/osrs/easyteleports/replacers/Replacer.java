@@ -1,7 +1,7 @@
-package com.uhdanny.osrs.easyteleportsplus.replacers;
+package com.duckblade.osrs.easyteleports.replacers;
 
-import com.uhdanny.osrs.easyteleportsplus.EasyTeleportsPlusConfig;
-import com.uhdanny.osrs.easyteleportsplus.TeleportReplacement;
+import com.duckblade.osrs.easyteleports.EasyTeleportsConfig;
+import com.duckblade.osrs.easyteleports.TeleportReplacement;
 import java.util.List;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.widgets.Widget;
@@ -9,7 +9,7 @@ import net.runelite.api.widgets.Widget;
 public interface Replacer
 {
 
-	void onConfigChanged(EasyTeleportsPlusConfig config);
+	void onConfigChanged(EasyTeleportsConfig config);
 
 	boolean isEnabled();
 

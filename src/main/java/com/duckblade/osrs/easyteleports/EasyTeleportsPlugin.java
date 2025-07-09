@@ -1,6 +1,6 @@
-package com.uhdanny.osrs.easyteleportsplus;
+package com.duckblade.osrs.easyteleports;
 
-import com.uhdanny.osrs.easyteleportsplus.replacers.*;
+import com.duckblade.osrs.easyteleports.replacers.*;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Binder;
@@ -34,12 +34,12 @@ import net.runelite.client.plugins.PluginDescriptor;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Easy Teleports Plus",
+	name = "Easy Teleports",
 	description = "Replaces teleport menu entries with more recognizable names for various items.",
 	tags = {"Pharaoh's", "Sceptre", "xeric's", "talisman", "kharedst's", "memoirs", "teleports", "Pendant of Ates"}
 )
 @Singleton
-public class EasyTeleportsPlusPlugin extends Plugin
+public class EasyTeleportsPlugin extends Plugin
 {
 
 	private static final Map<Integer, EquipmentInventorySlot> ACTION_PARAM_1_TO_EQUIPMENT_SLOT =
@@ -68,7 +68,7 @@ public class EasyTeleportsPlusPlugin extends Plugin
 	private ClientThread clientThread;
 
 	@Inject
-	private EasyTeleportsPlusConfig config;
+	private EasyTeleportsConfig config;
 
 	@Inject
 	private Set<Replacer> replacers;
@@ -98,7 +98,7 @@ public class EasyTeleportsPlusPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged e)
 	{
-		if (e.getGroup().equals(EasyTeleportsPlusConfig.CONFIG_GROUP))
+		if (e.getGroup().equals(EasyTeleportsConfig.CONFIG_GROUP))
 		{
 			propagateConfig();
 		}
@@ -228,9 +228,9 @@ public class EasyTeleportsPlusPlugin extends Plugin
 	}
 
 	@Provides
-	public EasyTeleportsPlusConfig provideConfig(ConfigManager configManager)
+	public EasyTeleportsConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(EasyTeleportsPlusConfig.class);
+		return configManager.getConfig(EasyTeleportsConfig.class);
 	}
 
 	private static <T> void applyReplacement(List<TeleportReplacement> replacements, T entry, Function<T, String> getter, BiConsumer<T, String> setter)

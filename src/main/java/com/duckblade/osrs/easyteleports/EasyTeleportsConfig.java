@@ -1,12 +1,12 @@
-package com.uhdanny.osrs.easyteleportsplus;
+package com.duckblade.osrs.easyteleports;
 
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 
-@ConfigGroup(EasyTeleportsPlusConfig.CONFIG_GROUP)
-public interface EasyTeleportsPlusConfig extends Config
+@ConfigGroup(EasyTeleportsConfig.CONFIG_GROUP)
+public interface EasyTeleportsConfig extends Config
 {
 
 	String CONFIG_GROUP = "easypharaohsceptre";
@@ -21,8 +21,6 @@ public interface EasyTeleportsPlusConfig extends Config
 	int POSITION_RING_OF_SHADOWS = POSITION_DRAKANS + 100;
 	int POSITION_NECKLACE_OF_PASSAGE = POSITION_RING_OF_SHADOWS + 100;
 	int POSITION_TEXT_SHADOWED = POSITION_NECKLACE_OF_PASSAGE + 100;
-
-	// Pendant of Ates
 	int POSITION_PENDANT_OF_ATES = POSITION_TEXT_SHADOWED + 100;
 
 	@ConfigSection(
@@ -211,11 +209,6 @@ public interface EasyTeleportsPlusConfig extends Config
 	{
 		return "<col=8800ff>Mastering Mixology</col>";
 	}
-
-	//
-	// END of Pendant of Ates //
-	//
-
 
 	// Enable Shadowed Text
 	@ConfigItem(
